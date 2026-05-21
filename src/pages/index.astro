@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Defamation & Libel Damages Calculator | defamationcalc.com';
+const description = 'Estimate potential damages for defamation, libel, and slander claims. Covers actual damages, presumed damages, and punitive damages. Free, informational.';
+---
+<BaseLayout title={title} description={description}>
+  <h1>Defamation &amp; Libel Damages Calculator</h1>
+  <p><em>Reviewed by Aspen Lockwood (AL), Editor-in-Chief. Updated May 2026.</em></p>
+  <p>Defamation is a false statement of fact that harms another person&rsquo;s reputation. Libel is defamation in written or published form; slander is spoken. The amount recoverable depends on whether you are a public or private figure, whether the statement is per se defamatory, and whether the defendant acted with actual malice. This calculator estimates potential recovery.</p>
+  <h2>Run the estimate</h2>
+  <form id="calc" novalidate>
+    <label for="plaintiff-type">Plaintiff status</label>
+    <select id="plaintiff-type">
+      <option value="private">Private individual</option>
+      <option value="limited-public">Limited-purpose public figure</option>
+      <option value="all-purpose-public">All-purpose public figure / celebrity</option>
+    </select>
+    <label for="defendant-type">Defendant type</label>
+    <select id="defendant-type">
+      <option value="individual">Private individual or small publisher</option>
+      <option value="media">Media organization / newspaper / broadcaster</option>
+      <option value="social">Social media platform user (viral post)</option>
+    </select>
+    <label for="per-se">Is the statement defamatory per se?</label>
+    <select id="per-se">
+      <option value="yes">Yes (criminal conduct, loathsome disease, professional unfitness, sexual misconduct)</option>
+      <option value="no">No — requires proof of special damages</option>
+    </select>
+    <label for="actual-malice">Did defendant act with actual malice?</label>
+    <select id="actual-malice">
+      <option value="no">No / unclear</option>
+      <option value="yes">Yes — knew the statement was false or acted with reckless disregard</option>
+    </select>
+    <label for="actual-damages">Documented actual damages (USD — lost income, business losses)</label>
+    <input id="actual-damages" type="number" value="0" min="0" />
+    <button type="submit">Estimate damages</button>
+  </form>
+  <p id="result" aria-live="polite"></p>
+  <h2>How defamation damages work</h2>
+  <p>Actual damages include lost income, lost business, medical costs for emotional distress treatment, and lost earning capacity. Presumed damages &mdash; available for per se defamation without proof of actual harm &mdash; allow juries to award general compensation for reputational harm. Punitive damages require actual malice and punish egregious misconduct.</p>
+  <p>The plaintiff&rsquo;s status is critical. Private figures need only show negligence by the defendant; public figures must prove actual malice (knowledge of falsity or reckless disregard for truth) under <em>New York Times Co. v. Sullivan</em> (1964). This higher bar significantly limits recovery by public figures.</p>
+  <h2>Where to learn more</h2>
+  <p>See <a href="/guides/how-defamation-damages-work">how defamation damages work</a>, <a href="/guides/types-of-defamation-claims">types of defamation claims</a>, <a href="/guides/what-to-do-after-defamation">what to do after defamation</a>, and <a href="/guides/defamation-misconceptions">common defamation misconceptions</a>.</p>
+  <script>
+    document.getElementById('calc').addEventListener('submit', e => {
+      e.preventDefault();
+      const ptype = document.getElementById('plaintiff-type').value;
+      const perSe = document.getElementById('per-se').value==='yes';
+      const malice = document.getElementById('actual-malice').value==='yes';
+      const actual = parseFloat(document.getElementById('actual-damages').value)||0;
+      const dtype = document.getElementById('defendant-type').value;
+      // Presumed/general damages base
+      let presumed = 0;
+      if (ptype==='private' && perSe) presumed = 75000;
+      else if (ptype==='private') presumed = 20000;
+      else if (ptype==='limited-public' && malice && perSe) presumed = 50000;
+      else if (ptype==='limited-public' && malice) presumed = 15000;
+      else if (ptype==='all-purpose-public' && malice) presumed = 30000;
+      // Punitive
+      let punitive = 0;
+      if (malice) {
+        const base = Math.max(actual, presumed);
+        punitive = dtype==='media' ? base*0.5 : base*1.5;
+      }
+      const total = actual + presumed + punitive;
+      const fmt = n=>'$'+Math.round(n).toLocaleString();
+      const note = ptype!=='private' && !malice ? ' (public figures must prove actual malice — limited recovery without it)' : '';
+      document.getElementById('result').innerHTML = total < 1000
+        ? `<strong>Limited recovery likely</strong><br>Public figures without proven actual malice have very limited defamation recovery under <em>New York Times v. Sullivan</em>.${note}<br><em>Consult a defamation attorney to assess your specific claim.</em>`
+        : `<strong>Estimated range: ${fmt(total*0.4)} &ndash; ${fmt(total*1.6)}</strong><br>Actual: ${fmt(actual)} &bull; Presumed/general: ${fmt(presumed)} &bull; Punitive: ${fmt(punitive)}<br><em>Defamation verdicts vary enormously. Consult a defamation attorney.</em>`;
+    });
+  </script>
+</BaseLayout>
