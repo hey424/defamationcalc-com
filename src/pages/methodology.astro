@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Methodology | defamationcalc.com';
+const description = 'How the defamation damages calculator works: actual damages, presumed damages, punitive damages, and the public figure bar.';
+---
+<BaseLayout title={title} description={description}>
+  <h1>Methodology &mdash; How We Estimate Defamation Damages</h1>
+  <p><em>Reviewed by Aspen Lockwood (AL), Editor-in-Chief. Updated May 2026.</em></p>
+  <h2>Actual damages</h2>
+  <p>User-entered documented losses: lost income (salary, business revenue), medical treatment for emotional distress, and out-of-pocket costs. These are the most provable damages and carry full weight in the estimate.</p>
+  <h2>Presumed / general damages</h2>
+  <p>For private figures, presumed damages reflect typical jury awards for reputational harm and emotional distress without proof of economic loss: ~$75K for per se defamation, ~$20K without per se. Public figures are eligible only with proven actual malice. These estimates are conservative medians from published jury verdict research.</p>
+  <h2>Punitive damages</h2>
+  <p>Available only when actual malice is proven. The calculator estimates 50% of base (actual + presumed) for media defendants and 150% for private/social defendants, consistent with published verdict patterns. Media defendants benefit from First Amendment scrutiny of punitive awards.</p>
+  <h2>Range width</h2>
+  <p>Output range is &plusmn;60% around the midpoint. Defamation damages are highly fact-specific and jury-dependent &mdash; the true range is even wider.</p>
+</BaseLayout>
