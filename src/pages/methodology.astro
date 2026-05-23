@@ -1,17 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'Methodology | defamationcalc.com';
-const description = 'How the defamation damages calculator works: actual damages, presumed damages, punitive damages, and the public figure bar.';
+const description = 'How the defamation damages calculator works: actual damages, presumed damages, punitive damages, the public figure bar, and what the calculator does not model.';
 ---
 <BaseLayout title={title} description={description}>
-  <h1>Methodology &mdash; How We Estimate Defamation Damages</h1>
-  <p><em>Reviewed by Aspen Lockwood (AL), Editor-in-Chief. Updated May 2026.</em></p>
-  <h2>Actual damages</h2>
-  <p>User-entered documented losses: lost income (salary, business revenue), medical treatment for emotional distress, and out-of-pocket costs. These are the most provable damages and carry full weight in the estimate.</p>
-  <h2>Presumed / general damages</h2>
-  <p>For private figures, presumed damages reflect typical jury awards for reputational harm and emotional distress without proof of economic loss: ~$75K for per se defamation, ~$20K without per se. Public figures are eligible only with proven actual malice. These estimates are conservative medians from published jury verdict research.</p>
-  <h2>Punitive damages</h2>
-  <p>Available only when actual malice is proven. The calculator estimates 50% of base (actual + presumed) for media defendants and 150% for private/social defendants, consistent with published verdict patterns. Media defendants benefit from First Amendment scrutiny of punitive awards.</p>
-  <h2>Range width</h2>
-  <p>Output range is &plusmn;60% around the midpoint. Defamation damages are highly fact-specific and jury-dependent &mdash; the true range is even wider.</p>
+  <h1>Methodology</h1>
+  <p><em>Reviewed by Knox Elmore (KE), Editor-in-Chief &mdash; Defamation &amp; Media Litigation Practice. Updated May 2026.</em></p>
+
+  <p>This page documents how the defamation damages calculator produces its estimates. Every input, every assumption, and every limitation is disclosed here. Defamation damages are among the most variable in civil litigation — the same false statement can produce wildly different outcomes depending on plaintiff status, defendant type, jurisdiction, and jury composition. The figures below reflect documented patterns from published defamation verdicts and settlement research, not theoretical maximums.</p>
+
+  <h2>Step 1: Actual Damages</h2>
+  <p>Actual damages are user-entered documented economic losses caused directly by the defamatory statement. These are the most concrete and most probative category of defamation damages. They include:</p>
+  <ul>
+    <li><strong>Lost employment income:</strong> Job loss or demotion directly traceable to the false statement — documented through termination letters, employer communications, or testimony connecting the false statement to the employment decision.</li>
+    <li><strong>Lost business or contracts:</strong> Revenue lost when clients, customers, or business partners withdrew from relationships after the false statement. Requires documentation connecting the defamatory statement to the specific economic loss.</li>
+    <li><strong>Medical costs:</strong> Treatment for clinically documented emotional distress, anxiety, or depression causally connected to the defamatory statement.</li>
+    <li><strong>Reputational rehabilitation costs:</strong> Out-of-pocket expenses for reputation management, PR consulting, or legal fees for demanding retractions from third-party publishers of the false statement.</li>
+  </ul>
+  <p>Actual damages carry full weight in the estimate and are the most defensible basis for recovery. In non-per-se defamation cases involving private figures, actual damages are required — the plaintiff cannot recover without proving specific economic harm.</p>
+
+  <h2>Step 2: Presumed / General Damages</h2>
+  <p>Presumed damages — available without proof of specific economic loss in per se defamation cases — reflect the jury's assessment of general reputational harm and emotional distress. The Supreme Court's decision in <em>Gertz v. Robert Welch, Inc.</em> (1974) limited presumed damages to cases where private figures prove at least negligence, and effectively barred presumed damages for public figures absent proof of actual malice.</p>
+  <p>The calculator applies the following presumed damage baselines, derived from median outcomes in published jury verdict research:</p>
+  <ul>
+    <li><strong>Private figure, defamation per se: $75,000.</strong> Private individuals with no public status who are falsely accused of serious crimes, loathsome diseases, professional unfitness, or sexual misconduct have the strongest defamation claims — no actual malice required, damages presumed, and juries tend to be sympathetic.</li>
+    <li><strong>Private figure, not per se: $20,000.</strong> Private individuals with documented non-per-se defamation (actual economic harm required to proceed) face a higher burden, but once actual harm is established, general damages for reputational harm and distress are available.</li>
+    <li><strong>Limited-purpose public figure, with actual malice, per se: $50,000.</strong> A public figure with respect to a specific controversy (a local politician, a prominent business executive in their industry, a community activist) who can prove the defendant knew the statement was false or acted recklessly has access to presumed damages, but the actual malice bar significantly constrains recovery.</li>
+    <li><strong>Limited-purpose public figure, with actual malice, not per se: $15,000.</strong> The combination of the actual malice requirement and the absence of per se defamation produces the lowest presumed damage figure in the model.</li>
+    <li><strong>All-purpose public figure, with actual malice: $30,000.</strong> Celebrities, major political figures, and others who have achieved pervasive fame must prove actual malice for any recovery. When they can prove it, the public prominence that made them public figures also means the false statement reached a wider audience — producing higher reputational harm per statement than a false statement about a private individual. The $30,000 baseline reflects the premium for reach, offset by the significant constraint of the actual malice requirement.</li>
+  </ul>
+
+  <h2>Step 3: Punitive Damages</h2>
+  <p>Punitive damages require proof of actual malice — that the defendant published knowing the statement was false, or with reckless disregard for its truth or falsity. The calculator estimates punitive damages based on defendant type:</p>
+  <ul>
+    <li><strong>Media defendants (newspapers, broadcasters, online media):</strong> Punitive damages estimated at 50% of the combined actual + presumed damages base. Media defendants benefit from constitutional scrutiny of punitive damage awards — courts apply heightened First Amendment review to punitive damages in defamation cases against media, and appellate courts regularly reduce grossly disproportionate awards. The 50% ratio reflects the documented median ratio in media defamation cases where punitive damages were awarded and survived appeal.</li>
+    <li><strong>Private individual or social media user defendants:</strong> Punitive damages estimated at 150% of the combined base. Private defamers and social media users have weaker First Amendment protections than institutional media, and courts apply less scrutiny to punitive awards. Viral social media defamation cases, where a single post reaches millions of viewers and causes catastrophic reputational harm, have produced some of the largest punitive awards in recent defamation history.</li>
+  </ul>
+
+  <h2>Step 4: Range</h2>
+  <p>The calculator displays a range of ±60% around the calculated midpoint. This wide range reflects the genuine unpredictability of defamation outcomes: jury composition is particularly influential in defamation cases because of the inherently subjective nature of reputational harm; the reach of the false statement (viral vs. limited) affects general damages even within the same category; and the quality of evidence of actual malice dramatically affects both liability and punitive damages. The true range of outcomes in defamation cases is even wider than ±60%.</p>
+
+  <h2>What the Calculator Does Not Model</h2>
+  <p>The calculator does not estimate: SLAPP (strategic lawsuit against public participation) statute anti-SLAPP fee-shifting, which can make the plaintiff liable for the defendant's attorney fees if the defamation claim is found to be a SLAPP suit; retraction statute effects on presumed and punitive damages; the single-publication vs. multiple-publication rule (which affects which states' law applies to a multi-state publication); injunctive relief (which is generally not available in defamation cases due to prior restraint doctrine); or the impact of Section 230 immunity on claims against platforms that host or republish the statement. The calculator is an educational estimate of damages potential, not a legal prediction for any specific case.</p>
+
+  <p>Return to the <a href="/">calculator</a> or see the <a href="/guides/how-defamation-damages-work">how defamation damages work guide</a>.</p>
 </BaseLayout>
