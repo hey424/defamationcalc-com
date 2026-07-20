@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadCapture from '../components/LeadCapture.astro';
 const title = 'Defamation & Libel Damages Calculator | defamationcalc.com';
 const description = 'Estimate potential damages for defamation, libel, and slander claims. Covers actual damages, presumed damages, and punitive damages. Free, informational.';
 ---
@@ -35,16 +36,19 @@ const description = 'Estimate potential damages for defamation, libel, and sland
     <input id="actual-damages" type="number" value="0" min="0" />
     <button type="submit">Estimate damages</button>
   </form>
-  <p id="result" aria-live="polite"></p>
+  
+
+  <LeadCapture caseType="defamation" caseTypeLabel="Defamation" />
+<p id="result" aria-live="polite"></p>
   <h2>How defamation damages work</h2>
   <p>Actual damages include lost income, lost business, medical costs for emotional distress treatment, and lost earning capacity. Presumed damages &mdash; available for per se defamation without proof of actual harm &mdash; allow juries to award general compensation for reputational harm. Punitive damages require actual malice and punish egregious misconduct.</p>
-  <p>The plaintiff&rsquo;s status is critical. Private figures need only show negligence by the defendant; public figures must prove actual malice (knowledge of falsity or reckless disregard for truth) under <em>New York Times Co. v. Sullivan</em> (1964). This higher bar significantly limits recovery by public figures. See the <a href="/methodology">full methodology</a> for how every input maps to a damages estimate.</p>
+  <p>The plaintiff&rsquo;s status is critical. Private figures need only show negligence by the defendant; public figures must prove actual malice (knowledge of falsity or reckless disregard for truth) under <em>New York Times Co. v. Sullivan</em> (1964). This higher bar significantly limits recovery by public figures. See the <a href="/methodology/">full methodology</a> for how every input maps to a damages estimate.</p>
   <h2>Understanding the inputs</h2>
   <p><strong>Plaintiff status:</strong> Private individuals have stronger defamation claims because they need not prove actual malice. A limited-purpose public figure is someone who has voluntarily injected themselves into a particular public controversy — a local politician, a prominent business executive, a community activist — and is treated as a public figure only for statements related to that controversy. An all-purpose public figure has achieved pervasive fame or notoriety and must prove actual malice for any recovery.</p>
   <p><strong>Per se defamation:</strong> The four traditional per se categories — false accusation of a serious crime, false statement of a loathsome disease, false statement of professional unfitness, and false statement of sexual misconduct — carry presumed damages without proof of specific economic loss. If the false statement does not fall into one of these categories, the plaintiff must prove actual economic harm to recover.</p>
   <p><strong>Actual malice:</strong> Required for all public figure claims. Also determines whether punitive damages are available. A defendant acts with actual malice when they publish a false statement knowing it is false, or when they act with reckless disregard for whether the statement is true or false — meaning they had serious doubts about its truth but published anyway.</p>
   <h2>Where to learn more</h2>
-  <p>See <a href="/guides/how-defamation-damages-work">how defamation damages work</a>, <a href="/guides/types-of-defamation-claims">types of defamation claims</a>, <a href="/guides/what-to-do-after-defamation">what to do after defamation</a>, and <a href="/guides/defamation-misconceptions">common defamation misconceptions</a>. The <a href="/faq">FAQ</a> addresses actual malice, Section 230, anti-SLAPP, and statutes of limitations. The <a href="/case-types">case types page</a> covers libel, slander, trade libel, and false light in detail.</p>
+  <p>See <a href="/guides/how-defamation-damages-work/">how defamation damages work</a>, <a href="/guides/types-of-defamation-claims/">types of defamation claims</a>, <a href="/guides/what-to-do-after-defamation/">what to do after defamation</a>, and <a href="/guides/defamation-misconceptions/">common defamation misconceptions</a>. The <a href="/faq/">FAQ</a> addresses actual malice, Section 230, anti-SLAPP, and statutes of limitations. The <a href="/case-types/">case types page</a> covers libel, slander, trade libel, and false light in detail.</p>
   <script>
     document.getElementById('calc').addEventListener('submit', e => {
       e.preventDefault();
